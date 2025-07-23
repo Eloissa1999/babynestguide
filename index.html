@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BabyNestGuide – Baby Product Reviews & Parenting Tips</title>
+  <title>BabyNestGuide – Best Baby Products for New Moms</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .baby-gradient {
@@ -33,18 +33,37 @@
     .baby-border {
       border-color: #fed7aa;
     }
+    .category-tab {
+      transition: all 0.3s ease;
+    }
+    .category-tab.active {
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .product-rating {
+      color: #fbbf24;
+    }
+    .price-tag {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.875rem;
+    }
   </style>
 </head>
 <body class="baby-gradient text-gray-800 font-sans">
 
   <!-- Header -->
-  <header class="bg-white/90 backdrop-blur-sm shadow-lg baby-shadow">
+  <header class="bg-white/90 backdrop-blur-sm shadow-lg baby-shadow sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
       <h1 class="text-3xl font-bold baby-text-primary">🍼 BabyNestGuide</h1>
       <nav class="space-x-4">
         <a href="#" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">🏠 Home</a>
-        <a href="#reviews" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">⭐ Reviews</a>
-        <a href="#guides" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">📚 Guides</a>
+        <a href="#categories" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">📦 Categories</a>
+        <a href="#essentials" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">⭐ Essentials</a>
         <a href="#about" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">👶 About</a>
       </nav>
     </div>
@@ -58,44 +77,524 @@
     <div class="absolute bottom-10 left-1/4 text-5xl opacity-20">🎈</div>
     <div class="absolute bottom-20 right-1/3 text-3xl opacity-20">🦋</div>
     <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="text-5xl font-bold baby-text-primary mb-6 leading-tight">✨ Trusted Baby Product Reviews & Parenting Tips</h2>
-      <p class="text-xl baby-text-secondary mb-8 max-w-2xl mx-auto">Your cozy online nest for choosing the best for your precious little one. 💕</p>
-      <a href="#latest" class="baby-button text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-block">🚀 Explore Now</a>
+      <h2 class="text-5xl font-bold baby-text-primary mb-6 leading-tight">✨ Best Baby Products for New Moms</h2>
+      <p class="text-xl baby-text-secondary mb-8 max-w-2xl mx-auto">Carefully curated essentials to make your parenting journey smoother, safer, and more joyful. 💕</p>
+      <a href="#categories" class="baby-button text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-block">🛍️ Shop by Category</a>
     </div>
   </section>
 
-  <!-- Latest Posts -->
-  <section id="latest" class="py-16 bg-white/50 backdrop-blur-sm">
+  <!-- Category Navigation -->
+  <section id="categories" class="py-12 bg-white/50 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-3xl font-bold baby-text-primary mb-8 text-center">📝 Latest Posts</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Post Card 1 -->
-        <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <img src="https://images.pexels.com/photos/6393342/pexels-photo-6393342.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Monitor Review" class="rounded-xl mb-4 w-full h-48 object-cover">
-          <h4 class="text-xl font-bold baby-text-primary mb-2">📹 Top 5 Baby Monitors of 2025</h4>
-          <p class="text-gray-600 text-sm mb-4">Stay connected and secure with these highly rated monitors for peace of mind.</p>
-          <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</a>
+      <h3 class="text-3xl font-bold baby-text-primary mb-8 text-center">🏷️ Shop by Category</h3>
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="category-tab active px-6 py-3 rounded-full font-semibold transition-all duration-300" onclick="showCategory('feeding')">🍼 Feeding</button>
+        <button class="category-tab px-6 py-3 rounded-full font-semibold bg-white baby-border border transition-all duration-300" onclick="showCategory('sleep')">😴 Sleep & Comfort</button>
+        <button class="category-tab px-6 py-3 rounded-full font-semibold bg-white baby-border border transition-all duration-300" onclick="showCategory('safety')">🛡️ Safety & Monitoring</button>
+        <button class="category-tab px-6 py-3 rounded-full font-semibold bg-white baby-border border transition-all duration-300" onclick="showCategory('care')">🧼 Baby Care</button>
+        <button class="category-tab px-6 py-3 rounded-full font-semibold bg-white baby-border border transition-all duration-300" onclick="showCategory('travel')">🚗 Travel & Mobility</button>
+        <button class="category-tab px-6 py-3 rounded-full font-semibold bg-white baby-border border transition-all duration-300" onclick="showCategory('play')">🎯 Play & Development</button>
+      </div>
+
+      <!-- Feeding Category -->
+      <div id="feeding" class="category-content">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393343/pexels-photo-6393343.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dr. Brown's Baby Bottles" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🍼 Dr. Brown's Anti-Colic Bottles</h4>
+              <span class="price-tag">$24.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 2,847 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Clinically proven to reduce colic, spit-up, burping, and gas. The internal vent system creates a positive-pressure flow similar to breastfeeding. BPA-free and dishwasher safe.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Anti-Colic</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">BPA-Free</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Dishwasher Safe</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393342/pexels-photo-6393342.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Philips Avent Breast Pump" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🤱 Philips Avent Electric Breast Pump</h4>
+              <span class="price-tag">$149.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.7/5 - 1,923 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Hospital-grade suction with customizable settings. Soft silicone cushion mimics baby's natural sucking rhythm. Includes storage containers and travel bag for busy moms.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-pink-100 text-pink-800 px-2 py-1 rounded-full mr-2">Hospital Grade</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Portable</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Easy Clean</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393344/pexels-photo-6393344.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby High Chair" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🪑 Graco 6-in-1 Convertible High Chair</h4>
+              <span class="price-tag">$89.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.6/5 - 3,156 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Grows with your child from infant to toddler. 6 height positions, 3 recline positions, and removable tray. Easy-to-clean seat pad and compact fold for storage.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded-full mr-2">6-in-1</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full mr-2">Adjustable</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Easy Clean</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
         </div>
-        <!-- Post Card 2 -->
-        <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <img src="https://images.pexels.com/photos/6393343/pexels-photo-6393343.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Feeding Essentials" class="rounded-xl mb-4 w-full h-48 object-cover">
-          <h4 class="text-xl font-bold baby-text-primary mb-2">🍼 Must-Have Feeding Essentials</h4>
-          <p class="text-gray-600 text-sm mb-4">Everything you need to make mealtime smooth, safe, and joyful for your little one.</p>
-          <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</a>
+      </div>
+
+      <!-- Sleep & Comfort Category -->
+      <div id="sleep" class="category-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Sleep Swaddle" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🌙 Halo SleepSack Swaddle</h4>
+              <span class="price-tag">$24.95</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.9/5 - 4,521 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Award-winning swaddle that helps babies sleep longer and safer. Adjustable fasteners for perfect fit, arms up or down design. Made from 100% cotton for comfort.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Safe Sleep</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">100% Cotton</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Adjustable</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393345/pexels-photo-6393345.jpeg?auto=compress&cs=tinysrgb&w=400" alt="White Noise Machine" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🎵 Hatch Baby Rest Sound Machine</h4>
+              <span class="price-tag">$59.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 2,834 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Smart sleep trainer with customizable colors, sounds, and brightness. Control via smartphone app. Grows with your child from newborn to toddler with time-to-rise features.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Smart Control</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Customizable</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Sleep Training</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393346/pexels-photo-6393346.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Crib" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🛏️ Babyletto Hudson 3-in-1 Convertible Crib</h4>
+              <span class="price-tag">$299.00</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.7/5 - 1,678 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Modern convertible crib that grows with your child. Converts to toddler bed and daybed. Made from sustainable New Zealand pine wood with non-toxic finishes.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Sustainable Wood</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">3-in-1</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Non-Toxic</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
         </div>
-        <!-- Post Card 3 -->
-        <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <img src="https://images.pexels.com/photos/1257110/pexels-photo-1257110.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sleep Training Tips" class="rounded-xl mb-4 w-full h-48 object-cover">
-          <h4 class="text-xl font-bold baby-text-primary mb-2">😴 Sleep Training Tips That Actually Work</h4>
-          <p class="text-gray-600 text-sm mb-4">Gentle, proven methods to help your baby (and you) sleep peacefully through the night.</p>
-          <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</a>
+      </div>
+
+      <!-- Safety & Monitoring Category -->
+      <div id="safety" class="category-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393347/pexels-photo-6393347.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Monitor" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">📹 Nanit Pro Smart Baby Monitor</h4>
+              <span class="price-tag">$299.95</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 3,247 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Award-winning smart monitor with HD video, sleep tracking, and personalized insights. Two-way audio, temperature and humidity sensors. Works with smartphone app.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">HD Video</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Sleep Tracking</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Smart Alerts</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393348/pexels-photo-6393348.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Gates" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🚪 Summer Infant Multi-Use Extra Tall Walk-Thru Gate</h4>
+              <span class="price-tag">$79.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.6/5 - 2,156 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Extra tall 36" gate perfect for larger dogs and active toddlers. Easy walk-through design with auto-close feature. Fits openings 28-48" wide with included extensions.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full mr-2">Extra Tall</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Auto-Close</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Easy Install</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393349/pexels-photo-6393349.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Outlet Covers" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🔌 Mommy's Helper Outlet Plugs (50-Pack)</h4>
+              <span class="price-tag">$12.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.9/5 - 5,432 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Essential childproofing plugs that are difficult for children to remove but easy for adults. Clear design blends with any decor. Includes removal tool for convenience.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full mr-2">Child-Resistant</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Clear Design</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">50-Pack</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
         </div>
-        <!-- Post Card for SMARTDEVIL Portable Clip-on Stroller Fan -->
-        <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 md:col-span-2 lg:col-span-1">
-          <img src="https://images.pexels.com/photos/6393344/pexels-photo-6393344.jpeg?auto=compress&cs=tinysrgb&w=400" alt="SMARTDEVIL Portable Clip-on Stroller Fan" class="rounded-xl mb-4 w-full h-48 object-cover">
-          <h4 class="text-xl font-bold baby-text-primary mb-2">🌀 SMARTDEVIL Portable Clip-on Stroller Fan</h4>
-          <p class="text-gray-600 text-sm mb-4">Your ultimate on-the-go cooling solution with flexible tripod, three speeds, and whisper-quiet operation.</p>
-          <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</a>
+      </div>
+
+      <!-- Baby Care Category -->
+      <div id="care" class="category-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393350/pexels-photo-6393350.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Bathtub" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🛁 Skip Hop Moby Smart Sling 3-Stage Bathtub</h4>
+              <span class="price-tag">$39.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.7/5 - 2,891 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Grows with baby through 3 stages: newborn sling, infant seat, and toddler tub. Smart sling provides extra support for newborns. Non-slip base and easy-drain plug.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">3-Stage</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Non-Slip</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Easy Drain</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393351/pexels-photo-6393351.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Diaper Bag" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">👜 JuJuBe B.F.F. Convertible Diaper Bag</h4>
+              <span class="price-tag">$180.00</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 1,567 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Stylish convertible bag that transforms from backpack to messenger bag. 14 pockets for organization, insulated bottle pockets, and machine-washable fabric with antimicrobial lining.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full mr-2">Convertible</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">14 Pockets</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Machine Washable</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393352/pexels-photo-6393352.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Thermometer" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🌡️ Braun ThermoScan 7 Ear Thermometer</h4>
+              <span class="price-tag">$49.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.9/5 - 4,123 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">#1 brand used by doctors. Age Precision technology adjusts for age. Pre-warmed tip ensures accuracy, color-coded display for fever guidance. Includes 21 lens filters.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full mr-2">Doctor Preferred</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Age Precision</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Color Coded</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel & Mobility Category -->
+      <div id="travel" class="category-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393353/pexels-photo-6393353.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Car Seat" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🚗 Chicco KeyFit 30 Infant Car Seat</h4>
+              <span class="price-tag">$199.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 3,789 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">#1 rated infant car seat in America. SuperCinch LATCH system for easy installation. Accommodates infants 4-30 lbs. Includes removable newborn insert and canopy.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full mr-2">#1 Rated</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Easy Install</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">4-30 lbs</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393354/pexels-photo-6393354.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Stroller" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🚶 UPPAbaby Vista V2 Stroller</h4>
+              <span class="price-tag">$929.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.9/5 - 2,456 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Luxury stroller that grows with your family. Converts to double stroller, reversible seat, all-terrain wheels. Includes bassinet, rain shield, and bug shield.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full mr-2">Convertible</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">All-Terrain</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Includes Bassinet</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393355/pexels-photo-6393355.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Carrier" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">👶 Ergobaby Omni 360 All-Position Baby Carrier</h4>
+              <span class="price-tag">$179.95</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.7/5 - 3,234 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Award-winning carrier with 4 ergonomic positions. Supports newborns to toddlers (7-45 lbs). Padded shoulder straps and lumbar support for parent comfort. Machine washable.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded-full mr-2">4 Positions</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">7-45 lbs</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full">Machine Washable</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Play & Development Category -->
+      <div id="play" class="category-content hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393356/pexels-photo-6393356.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Play Mat" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🎯 Fisher-Price Deluxe Kick & Play Piano Gym</h4>
+              <span class="price-tag">$59.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.8/5 - 4,567 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Multi-sensory play gym that grows with baby. Piano keys light up and play music when kicked. 5 repositionable toys, removable piano for take-along play. Machine washable mat.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">Multi-Sensory</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">5 Toys</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Machine Washable</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393357/pexels-photo-6393357.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Swing" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">🎠 Graco Simple Sway Baby Swing</h4>
+              <span class="price-tag">$89.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.6/5 - 2,789 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Compact swing with side-to-side swaying motion. 6 swing speeds, 15 songs and sounds, vibration feature. Removable seat doubles as rocker. Accommodates babies up to 30 lbs.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">6 Speeds</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">2-in-1</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Up to 30 lbs</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+
+          <div class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <img src="https://images.pexels.com/photos/6393358/pexels-photo-6393358.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Baby Books" class="rounded-xl mb-4 w-full h-48 object-cover">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-bold baby-text-primary">📚 VTech Musical Rhymes Book</h4>
+              <span class="price-tag">$14.99</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <div class="product-rating text-lg">⭐⭐⭐⭐⭐</div>
+              <span class="text-sm text-gray-600 ml-2">(4.9/5 - 5,123 reviews)</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Interactive book with 6 classic nursery rhymes. Colorful pages feature sing-along songs, fun sound effects, and twinkling lights. Develops language skills and motor coordination.</p>
+            <div class="text-xs text-gray-500 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full mr-2">6 Rhymes</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full mr-2">Interactive</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Educational</span>
+            </div>
+            <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Mom Essentials -->
+  <section id="essentials" class="py-16 bg-gradient-to-br from-pink-50 to-orange-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold baby-text-primary mb-4 text-center">⭐ New Mom Must-Haves</h3>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Essential products every new mom needs for the first few months. Carefully selected based on real parent reviews and expert recommendations.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="baby-card p-8 rounded-2xl baby-shadow">
+          <h4 class="text-2xl font-bold baby-text-primary mb-6">🍼 Feeding Essentials</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Anti-colic bottles</strong> - Reduces gas and fussiness
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Breast pump</strong> - For pumping and storage flexibility
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Nursing pillow</strong> - Comfortable feeding position
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Burp cloths</strong> - Protect clothes during feeding
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="baby-card p-8 rounded-2xl baby-shadow">
+          <h4 class="text-2xl font-bold baby-text-primary mb-6">😴 Sleep & Comfort</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Swaddle blankets</strong> - Help baby sleep longer
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>White noise machine</strong> - Soothing sleep sounds
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Night light</strong> - Gentle illumination for night feeds
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Pacifiers</strong> - Comfort and self-soothing
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="baby-card p-8 rounded-2xl baby-shadow">
+          <h4 class="text-2xl font-bold baby-text-primary mb-6">🧼 Care & Safety</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Baby monitor</strong> - Peace of mind while baby sleeps
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Thermometer</strong> - Quick and accurate temperature checks
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Baby bathtub</strong> - Safe and comfortable bathing
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Diaper bag</strong> - Organized storage for outings
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="baby-card p-8 rounded-2xl baby-shadow">
+          <h4 class="text-2xl font-bold baby-text-primary mb-6">🚗 Travel & Mobility</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Infant car seat</strong> - Essential for safe travel
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Stroller</strong> - Easy mobility for walks and errands
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Baby carrier</strong> - Hands-free bonding and mobility
+              </div>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-3 mt-1">✓</span>
+              <div>
+                <strong>Portable changing pad</strong> - Clean changes anywhere
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -107,18 +606,56 @@
     <div class="absolute bottom-10 left-10 text-5xl opacity-20">💝</div>
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold baby-text-primary mb-6">💕 About BabyNestGuide</h3>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">We're here to help new and expecting parents find the best baby products, with honest reviews and easy-to-follow guides. Whether you're prepping for your first precious bundle of joy or expanding your loving nest, we've got you covered with trusted advice and heartfelt recommendations. 🌟</p>
+      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto mb-8">We understand that choosing the right products for your precious little one can feel overwhelming. That's why we've carefully curated the best baby products based on real parent experiences, expert recommendations, and rigorous safety standards. From feeding essentials to sleep solutions, we're here to guide new moms through every step of their parenting journey. 🌟</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="text-center">
+          <div class="text-4xl mb-4">🔍</div>
+          <h4 class="font-bold baby-text-primary mb-2">Expert Reviews</h4>
+          <p class="text-gray-600 text-sm">Thoroughly tested and reviewed by parenting experts</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">👥</div>
+          <h4 class="font-bold baby-text-primary mb-2">Real Parent Feedback</h4>
+          <p class="text-gray-600 text-sm">Based on thousands of authentic parent reviews</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">🛡️</div>
+          <h4 class="font-bold baby-text-primary mb-2">Safety First</h4>
+          <p class="text-gray-600 text-sm">All products meet the highest safety standards</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-white/90 backdrop-blur-sm baby-border border-t-2 py-8 text-center">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-sm text-gray-600 mb-2">© 2025 BabyNestGuide. All rights reserved. Made with 💝 for parents everywhere.</p>
-      <p class="text-xs text-gray-500">🍼 Creating a better world for babies, one review at a time 🌈</p>
+      <p class="text-sm text-gray-600 mb-2">© 2025 BabyNestGuide. All rights reserved. Made with 💝 for new moms everywhere.</p>
+      <p class="text-xs text-gray-500">🍼 Helping you choose the best for your precious little one 🌈</p>
     </div>
   </footer>
 
+  <script>
+    function showCategory(categoryId) {
+      // Hide all category content
+      const contents = document.querySelectorAll('.category-content');
+      contents.forEach(content => content.classList.add('hidden'));
+      
+      // Remove active class from all tabs
+      const tabs = document.querySelectorAll('.category-tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+        tab.classList.add('bg-white', 'baby-border', 'border');
+      });
+      
+      // Show selected category
+      document.getElementById(categoryId).classList.remove('hidden');
+      
+      // Add active class to clicked tab
+      event.target.classList.add('active');
+      event.target.classList.remove('bg-white', 'baby-border', 'border');
+    }
+  </script>
+
 </body>
 </html>
-
