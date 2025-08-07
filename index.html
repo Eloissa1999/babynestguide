@@ -52,6 +52,87 @@
       font-weight: bold;
       font-size: 0.875rem;
     }
+    .article-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow-y: auto;
+    }
+    .article-content {
+      background-color: white;
+      margin: 2% auto;
+      padding: 0;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .article-content h1, .article-content h2 {
+      color: #ea580c;
+      font-weight: bold;
+    }
+    .article-content h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .article-content h2 {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+    .article-content p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .article-content ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .article-content li {
+      margin-bottom: 0.5rem;
+    }
+    .article-content a {
+      color: #ea580c;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .article-content a:hover {
+      color: #f97316;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .close:hover {
+      color: #ea580c;
+    }
+    .carrier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .carrier-card {
+      background: linear-gradient(145deg, #ffffff 0%, #fef7ed 100%);
+      border: 1px solid #fed7aa;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 25px rgba(251, 146, 60, 0.1);
+      transition: all 0.3s ease;
+    }
+    .carrier-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(251, 146, 60, 0.2);
+    }
   </style>
 </head>
 <body class="baby-gradient text-gray-800 font-sans">
@@ -135,10 +216,71 @@
 
       <!-- Travel & Mobility Category -->
       <div id="travel" class="category-content hidden">
-        <div class="text-center py-16">
+        <div class="text-center mb-8">
           <div class="text-6xl mb-4 opacity-30">🚗</div>
-          <h4 class="text-xl font-semibold baby-text-primary mb-2">No products yet</h4>
-          <p class="text-gray-500">Travel & mobility products will be added here</p>
+          <h4 class="text-2xl font-semibold baby-text-primary mb-2">Travel & Mobility</h4>
+          <p class="text-gray-600">Essential baby carriers for hands-free bonding and mobility</p>
+        </div>
+
+        <!-- Baby Carriers Grid -->
+        <div class="carrier-grid">
+          <!-- Carrier 1 -->
+          <div class="carrier-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-semibold">👑 Best Overall</span>
+              <div class="text-yellow-500">⭐⭐⭐⭐☆ 4.6</div>
+            </div>
+            <h5 class="text-lg font-bold baby-text-primary mb-2">Houndstooth Baby Carrier</h5>
+            <p class="text-sm text-gray-600 mb-3">Stylish and comfortable with breathable material and wide straps. Perfect minimalist design.</p>
+            <ul class="text-xs text-gray-600 mb-4 space-y-1">
+              <li>• Neutral houndstooth print</li>
+              <li>• Newborn to toddler</li>
+              <li>• Supportive lumbar panel</li>
+            </ul>
+            <a href="https://www.kqzyfj.com/click-101023403-17091749?url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0DT4D8C8J%3Fmaas%3Dmaas_adg_api_586964248912964185_static_12_201%26ref_%3Daa_maas%26tag%3Dmaas%26aa_campaignid%3Dd827131540762f71cc7505c86a5cc9aa%26aa_adgroupid%3Dcb1cd803914bc67b18e68963ce540fea_PBSEP_%7Bpid%7D_%7Baid%7D_%7Burl%28sid%29%7D%26aa_creativeid%3D9e20QVH30XPv5D7miiEyyTt92TIawbd8uH0TK3oPW4g61fY_c&cjsku=3307_B0DT4D8C8J" target="_blank" class="baby-button text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 block text-center">View on Amazon</a>
+          </div>
+
+          <!-- Carrier 2 -->
+          <div class="carrier-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full font-semibold">🥈 Everyday Use</span>
+              <div class="text-yellow-500">⭐⭐⭐⭐☆ 4.5</div>
+            </div>
+            <h5 class="text-lg font-bold baby-text-primary mb-2">GROWNSY Baby Carrier</h5>
+            <p class="text-sm text-gray-600 mb-3">Wrap-style hybrid with breathable, lightweight design. Perfect for newborn snuggles.</p>
+            <ul class="text-xs text-gray-600 mb-4 space-y-1">
+              <li>• Machine washable</li>
+              <li>• Great for small babies</li>
+              <li>• Ergonomic hip support</li>
+            </ul>
+            <a href="https://www.anrdoezrs.net/click-101023403-17091749?url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0DMV76C23%3Fmaas%3Dmaas_adg_api_584440325643011840_static_12_201%26ref_%3Daa_maas%26tag%3Dmaas%26aa_campaignid%3D5d91d22bd1bfb0bc570833929d71ff94%26aa_adgroupid%3D39977477d666a21566f1716dda376904_PBSEP_%7Bpid%7D_%7Baid%7D_%7Burl%28sid%29%7D%26aa_creativeid%3D0af4RCihH04izuaqtsoki2MSRAq2IIOnjrwwiQ1faXYexhU_c&cjsku=2600_B0DMV76C23" target="_blank" class="baby-button text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 block text-center">View on Amazon</a>
+          </div>
+
+          <!-- Carrier 3 -->
+          <div class="carrier-card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full font-semibold">🥉 Most Supportive</span>
+              <div class="text-yellow-500">⭐⭐⭐⭐☆ 4.5</div>
+            </div>
+            <h5 class="text-lg font-bold baby-text-primary mb-2">Bebamour Airflow Carrier</h5>
+            <p class="text-sm text-gray-600 mb-3">Maximum airflow design with hip seat support. Perfect for hot climates and longer outings.</p>
+            <ul class="text-xs text-gray-600 mb-4 space-y-1">
+              <li>• Breathable mesh front</li>
+              <li>• Built-in hip seat</li>
+              <li>• Multiple carry positions</li>
+            </ul>
+            <a href="https://www.kqzyfj.com/click-101023403-15849737?url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB0CWXN3H3T&cjsku=B0CWXN3H3T" target="_blank" class="baby-button text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 block text-center">View on Amazon</a>
+          </div>
+
+          <!-- See Full Article Button -->
+          <div class="carrier-card border-2 border-dashed baby-border flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-4xl mb-3 opacity-50">📝</div>
+              <h5 class="text-lg font-semibold baby-text-primary mb-2">See All 7 Carriers</h5>
+              <p class="text-sm text-gray-500 mb-4">Read our complete guide with mom tips & detailed reviews</p>
+              <button onclick="openArticle()" class="baby-button text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300">Read Full Article</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -162,26 +304,26 @@
       <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Real experiences and practical advice from experienced parents. Get insights that only come from hands-on parenting.</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Article 1 - Placeholder for your content -->
+        <!-- Featured Article - Baby Carriers -->
         <article class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-          <div class="bg-gradient-to-br from-pink-100 to-orange-100 rounded-xl p-4 mb-4 text-center">
+          <div class="bg-gradient-to-br from-orange-100 to-red-100 rounded-xl p-4 mb-4 text-center">
             <div class="text-4xl mb-2">👶</div>
-            <span class="text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded-full">New Article</span>
+            <span class="text-xs bg-orange-200 text-orange-800 px-2 py-1 rounded-full">Featured</span>
           </div>
-          <h4 class="text-xl font-bold baby-text-primary mb-3">Your First Article Title</h4>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">Add your own article content here. Share your personal experiences, tips, and insights about baby products and parenting...</p>
+          <h4 class="text-xl font-bold baby-text-primary mb-3">7 Best Baby Carriers for Newborn to Toddler</h4>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">Mom-approved picks for 2025! From the stylish Houndstooth carrier to budget-friendly options, find your perfect hands-free bonding solution...</p>
           <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
-            <span>📅 Add your date</span>
-            <span>⏱️ 5 min read</span>
+            <span>📅 August 2025</span>
+            <span>⏱️ 8 min read</span>
           </div>
-          <a href="#" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</a>
+          <button onclick="openArticle()" class="baby-text-primary font-semibold hover:text-orange-600 transition-colors">Read More →</button>
         </article>
 
         <!-- Article 2 - Placeholder for your content -->
         <article class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
           <div class="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-4 mb-4 text-center">
             <div class="text-4xl mb-2">🍼</div>
-            <span class="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded-full">Featured</span>
+            <span class="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded-full">Coming Soon</span>
           </div>
           <h4 class="text-xl font-bold baby-text-primary mb-3">Your Second Article Title</h4>
           <p class="text-gray-600 text-sm mb-4 line-clamp-3">Another space for your personal article. Share detailed reviews, comparisons, or guides based on your real experience...</p>
@@ -196,7 +338,7 @@
         <article class="baby-card p-6 rounded-2xl baby-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
           <div class="bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-4 mb-4 text-center">
             <div class="text-4xl mb-2">🛡️</div>
-            <span class="text-xs bg-green-200 text-green-800 px-2 py-1 rounded-full">Popular</span>
+            <span class="text-xs bg-green-200 text-green-800 px-2 py-1 rounded-full">Coming Soon</span>
           </div>
           <h4 class="text-xl font-bold baby-text-primary mb-3">Your Third Article Title</h4>
           <p class="text-gray-600 text-sm mb-4 line-clamp-3">Space for another personal article. Maybe focus on safety tips, product comparisons, or parenting advice from your experience...</p>
@@ -238,9 +380,9 @@
             <p class="text-xs text-gray-500 mt-1">0 articles</p>
           </div>
           <div class="baby-card p-4 rounded-xl text-center hover:shadow-lg transition-all duration-300">
-            <div class="text-2xl mb-2">🛍️</div>
-            <h5 class="font-semibold baby-text-primary text-sm">Product Reviews</h5>
-            <p class="text-xs text-gray-500 mt-1">0 articles</p>
+            <div class="text-2xl mb-2">🚗</div>
+            <h5 class="font-semibold baby-text-primary text-sm">Travel & Mobility</h5>
+            <p class="text-xs text-gray-500 mt-1">1 article</p>
           </div>
         </div>
       </div>
@@ -372,67 +514,4 @@
               </div>
             </li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-gradient-to-br from-orange-50 to-amber-50 relative">
-    <div class="absolute top-10 right-10 text-4xl opacity-20">👶</div>
-    <div class="absolute bottom-10 left-10 text-5xl opacity-20">💝</div>
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold baby-text-primary mb-6">💕 About BabyNestGuide</h3>
-      <p class="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto mb-8">We understand that choosing the right products for your precious little one can feel overwhelming. That's why we've carefully curated the best baby products based on real parent experiences, expert recommendations, and rigorous safety standards. From feeding essentials to sleep solutions, we're here to guide new moms through every step of their parenting journey. 🌟</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        <div class="text-center">
-          <div class="text-4xl mb-4">🔍</div>
-          <h4 class="font-bold baby-text-primary mb-2">Expert Reviews</h4>
-          <p class="text-gray-600 text-sm">Thoroughly tested and reviewed by parenting experts</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">👥</div>
-          <h4 class="font-bold baby-text-primary mb-2">Real Parent Feedback</h4>
-          <p class="text-gray-600 text-sm">Based on thousands of authentic parent reviews</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">🛡️</div>
-          <h4 class="font-bold baby-text-primary mb-2">Safety First</h4>
-          <p class="text-gray-600 text-sm">All products meet the highest safety standards</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white/90 backdrop-blur-sm baby-border border-t-2 py-8 text-center">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-sm text-gray-600 mb-2">© 2025 BabyNestGuide. All rights reserved. Made with 💝 for new moms everywhere.</p>
-      <p class="text-xs text-gray-500">🍼 Helping you choose the best for your precious little one 🌈</p>
-    </div>
-  </footer>
-
-  <script>
-    function showCategory(categoryId) {
-      // Hide all category content
-      const contents = document.querySelectorAll('.category-content');
-      contents.forEach(content => content.classList.add('hidden'));
-      
-      // Remove active class from all tabs
-      const tabs = document.querySelectorAll('.category-tab');
-      tabs.forEach(tab => {
-        tab.classList.remove('active');
-        tab.classList.add('bg-white', 'baby-border', 'border');
-      });
-      
-      // Show selected category
-      document.getElementById(categoryId).classList.remove('hidden');
-      
-      // Add active class to clicked tab
-      event.target.classList.add('active');
-      event.target.classList.remove('bg-white', 'baby-border', 'border');
-    }
-  </script>
-
-</body>
-</html>
+        
