@@ -1,0 +1,13 @@
+{
+  "name": "babynestguide",
+  "version": "1.0.0",
+  "description": "Best Baby Products for New Moms",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 3000",
+    "start": "npx http-server . -p 3000"
+  },
+  "keywords": ["baby", "products", "parenting", "newborn"],
+  "author": "",
+  "license": "ISC"
+}
